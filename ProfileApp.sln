@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileApp", "ProfileApp\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codehaks.Extentions.LiteDb", "Codehaks.Extentions.LiteDb\Codehaks.Extentions.LiteDb.csproj", "{46F441B5-46D7-4F7A-B559-3A7DB8DFFE29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codehaks.IranData", "Codehaks.IranData\Codehaks.IranData.csproj", "{6E943756-B24D-4980-8030-97CEE5CE8866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{46F441B5-46D7-4F7A-B559-3A7DB8DFFE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F441B5-46D7-4F7A-B559-3A7DB8DFFE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F441B5-46D7-4F7A-B559-3A7DB8DFFE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E943756-B24D-4980-8030-97CEE5CE8866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E943756-B24D-4980-8030-97CEE5CE8866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E943756-B24D-4980-8030-97CEE5CE8866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E943756-B24D-4980-8030-97CEE5CE8866}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
