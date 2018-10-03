@@ -6,36 +6,99 @@
 
 <h2>پروفایل جدید</h2>
 <hr />
-
-<form asp-action="Create">
-
-
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="@Model.FirstName" class="control-label"></label>
-        <input asp-for="@Model.LastName" class="form-control" />
-        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.LastName" class="control-label"></label>
-        <input asp-for="@Model.LastName" class="form-control" />
-        <span asp-validation-for="@Model.LastName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.ProvinceId" class="control-label"></label>
-        <input asp-for="@Model.ProvinceId" class="form-control" />
-        <span asp-validation-for="@Model.ProvinceId" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.CityId" class="control-label"></label>
-        <input asp-for="@Model.CityId" class="form-control" />
-        <span asp-validation-for="@Model.CityId" class="text-danger"></span>
-    </div>
+<div id="app">
+    <form asp-action="Create">
 
 
-    <div class="form-group">
-        <input type="submit" value="ثبت" class="btn btn-default w-25" />
-    </div>
-</form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.FirstName" class="control-label"></label>
+            <input asp-for="@Model.LastName" class="form-control" />
+            <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.LastName" class="control-label"></label>
+            <input asp-for="@Model.LastName" class="form-control" />
+            <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ProvinceId" class="control-label"></label>
+            <input asp-for="@Model.ProvinceId" class="form-control" />
+            <span asp-validation-for="@Model.ProvinceId" class="text-danger"></span>
+
+            <select v-model="selectedProvince" class="form-control" v-on:click="onProvinceChange">
+                <option v-for="item in provinces" v-bind:value="item.id">
+                    {{item.name}}
+                </option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.CityId" class="control-label"></label>
+            <input asp-for="@Model.CityId" class="form-control" />
+            <span asp-validation-for="@Model.CityId" class="text-danger"></span>
+            <select v-model="selectedCity" class="form-control" >
+                <option v-for="item in selectedProvinceCities" v-bind:value="item.id">
+                    {{item.name}}
+                </option>
+            </select>
+        </div>
 
 
+        <div class="form-group">
+            <input type="submit" value="ثبت" class="btn btn-default w-25" />
+        </div>
+    </form>
+</div>
+
+@section scripts{
+
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                provinces: [],
+                cities: [],
+                selectedProvinceCities: [],
+                selectedProvince: null,
+                selectedCity: null
+            },
+            created: function () {
+                this.getData();
+            },
+            methods: {
+                onProvinceChange: function () {
+                    this.selectedProvinceCities = [];
+                    for (var i = 0; i < this.cities.length; i++) {
+                        if (this.cities[i].provinceID == this.selectedProvince) {
+                            this.selectedProvinceCities.push(this.cities[i]);
+                        }
+
+                    }
+                },
+                getData: function () {
+                    var vm = this;
+                    $.ajax({ url: "/api/provinces.json", method: "GET" })
+                        .done(function (data) {
+                            vm.provinces = data;
+
+                        }).fail(function () {
+
+                        }).always(function () {
+
+                        });
+                    $.ajax({ url: "/api/cities.json", method: "GET" })
+                        .done(function (data) {
+                            vm.cities = data;
+
+                        }).fail(function () {
+
+                        }).always(function () {
+
+                        });
+                }
+            }
+        })
+    </script>
+}
