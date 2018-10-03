@@ -24,7 +24,8 @@
         <div class="form-group">
 
 
-            <select asp-for="@Model.ProvinceId" v-model="selectedProvince" class="form-control" v-on:click="onProvinceChange">
+            <select asp-for="@Model.ProvinceId" v-model="selectedProvince" class="form-control" v-on:click="onProvinceChange" >
+                <option value=null>انتخاب کنید</option>
                 <option v-for="item in provinces" v-bind:value="item.id">
                     {{item.name}}
                 </option>
@@ -33,7 +34,8 @@
         </div>
         <div class="form-group">
 
-            <select asp-for="@Model.CityId" v-model="selectedCity" class="form-control">
+            <select asp-for="@Model.CityId" v-model="selectedCity" class="form-control" v-bind:disabled="selectedProvince===null">
+                <option value=null>انتخاب کنید</option>
                 <option v-for="item in selectedProvinceCities" v-bind:value="item.id">
                     {{item.name}}
                 </option>
