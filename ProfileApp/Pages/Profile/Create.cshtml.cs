@@ -36,7 +36,7 @@ namespace ProfileApp.Pages.Profile
                 TimeCreated = DateTime.Now
             });
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }

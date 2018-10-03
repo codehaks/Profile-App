@@ -23,16 +23,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @foreach (var profile in Model.ProfileList)
-            {
+
+        @foreach (var profile in Model.ProfileList)
+        {
+            <tr>
+                <td></td>
                 <td>@profile.FirstName</td>
                 <td>@profile.LastName</td>
                 <td>@profile.CityId</td>
                 <td>@profile.ProvinceId</td>
-            }
-        </tr>
-       
+            </tr>
+        }
+
+
     </tbody>
 </table>
 
