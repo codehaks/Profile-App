@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Codehaks.Extentions.LiteDb\Codehaks.Extentions.LiteDb.csproj" />
-    <ProjectReference Include="..\Codehaks.IranData\Codehaks.IranData.csproj" />
   </ItemGroup>
 
 </Project>

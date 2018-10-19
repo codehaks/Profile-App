@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Codehaks.Extentions.LiteDb;
@@ -18,9 +19,16 @@ namespace ProfileApp.Pages.Profile
             _db = db;
         }
 
+        [Display(Name = "نام")]
         public string FirstName { get; set; }
+
+        [Display(Name = "نام")]
         public string LastName { get; set; }
+
+        [Display(Name = "استان")]
         public int ProvinceId { get; set; }
+
+        [Display(Name = "شهر")]
         public int CityId { get; set; }
 
         public IActionResult OnPost()
