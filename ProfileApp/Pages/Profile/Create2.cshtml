@@ -12,23 +12,23 @@
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="@Model.FirstName" class="control-label"></label>
-            <input asp-for="@Model.FirstName" class="form-control" />
-            <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+            <label asp-for="@Model.Input.FirstName" class="control-label"></label>
+            <input asp-for="@Model.Input.FirstName" class="form-control" />
+            <span asp-validation-for="@Model.Input.FirstName" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="@Model.LastName" class="control-label"></label>
-            <input asp-for="@Model.LastName" class="form-control" />
-            <span asp-validation-for="@Model.LastName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-
-            <select asp-for="@Model.ProvinceId" id="province" class="form-control"></select>
-
+            <label asp-for="@Model.Input.LastName" class="control-label"></label>
+            <input asp-for="@Model.Input.LastName" class="form-control" />
+            <span asp-validation-for="@Model.Input.LastName" class="text-danger"></span>
         </div>
         <div class="form-group">
 
-            <select asp-for="@Model.CityId" id="city" class="form-control"></select>
+            <select asp-for="@Model.Input.ProvinceId" id="province" class="form-control"></select>
+
+        </div>
+        <div class="form-group">
+
+            <select asp-for="@Model.Input.CityId" id="city" class="form-control"></select>
         </div>
 
 
@@ -44,14 +44,10 @@
     <script>
         $(document).ready(function () {
 
-
-
             var $provinceDropdown = $("#province");
             var $cityDropdown = $("#city");
             $provinceDropdown.append('<option > انتخاب کنید </option>');
             $cityDropdown.append('<option disabled > ابتدا استان انتخاب کنید </option>');
-            
-
 
             var onProvinceChange = function (provinceId) {
                 $cityDropdown.children().remove().end();
@@ -64,7 +60,6 @@
             }
 
             $provinceDropdown.on("change", function () {
-
                 onProvinceChange($provinceDropdown.find(":selected").val());
             });
 
@@ -84,9 +79,6 @@
                         cities = data;
                     });
             }
-
-
-
             getData();
         });
     </script>

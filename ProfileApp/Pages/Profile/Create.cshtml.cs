@@ -19,30 +19,15 @@ namespace ProfileApp.Pages.Profile
             _db = db;
         }
 
-        [Display(Name = "نام")]
-        public string FirstName { get; set; }
+        public UserProfile Input { get; set; }
 
-        [Display(Name = "نام")]
-        public string LastName { get; set; }
 
-        [Display(Name = "استان")]
-        public int ProvinceId { get; set; }
-
-        [Display(Name = "شهر")]
-        public int CityId { get; set; }
 
         public IActionResult OnPost()
         {
             var profiles=_db.Context.GetCollection<UserProfile>();
 
-            profiles.Insert(new UserProfile()
-            {
-                FirstName = FirstName,
-                LastName = LastName,
-                CityId = CityId,
-                ProvinceId = ProvinceId,
-                TimeCreated = DateTime.Now
-            });
+            profiles.Insert(Input);
 
             return RedirectToPage("/Index");
         }
