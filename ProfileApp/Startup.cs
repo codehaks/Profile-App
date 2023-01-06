@@ -10,7 +10,7 @@ namespace ProfileApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddLiteDb(@"Profiles.db");
+            services.AddLiteDb(@"Profiles1.db");
         }
 
 
@@ -21,7 +21,15 @@ namespace ProfileApp
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseMvc();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+
+            });
+
         }
     }
 }
